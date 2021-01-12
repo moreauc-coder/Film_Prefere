@@ -1,33 +1,17 @@
-
-alert('Fichier JS bien appelé');
-
-//function connection(){
- //   alert('connection impossible');
-//}
-
-
-if(document.getElementById('formulaire_contact')){
-    alert('ok');
-    var email = document.getElementById("email");
-//    var mdp = document.getElementById("mdp").value;
-//    var msg = document.getElementById("msg").value;
-    alert(email.value);
-//    alert(mdp);
-//    alert(msg);
-    
-//    if(email || mdp || msg ){
-//        alert("tout rempli");
-//       
-//       }
-    
+function connection(){
+    alert('connection impossible');
 }
 
-//function formulaire(){
-//    alert('ok');
-//    
-////   if (MotDepasse OR email OR Message == empty ){
-////        alert('Veuillez remplir tout les champs');
-////    }else{
-////        alert("c'est good");
-////    }
-//}
+function formulaire(){
+	var email = document.getElementById("email").value;
+	var mdp = document.getElementById("mdp").value;
+	var msg = document.getElementById("msg").value;
+
+	if (email && mdp && msg){
+        alert("c'est good");
+    } else {
+        alert('Veuillez remplir tout les champs');
+        return false; // Permet de bloquer la soumission du formulaire
+    }
+
+}
