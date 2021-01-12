@@ -17,3 +17,14 @@
     font-family: Comic Sans MS, Courier New, Verdana, serif;
     
 }
+.LPC{
+    position: relative;
+    width: 54%;
+    text-align:left 20%;
+}
+.connexion{
+    color: white;
+   font-size: 35px;
+    margin-right: 10px;
+    cursor: pointer;
+}
