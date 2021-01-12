@@ -1,0 +1,19 @@
+.bouton_Bande_Annonce {
+    position:relative;
+    TEXT-ALIGN: CENTER;
+    MARGIN-TOP:30%;
+}
+
+.imgJ{
+    position: absolute;
+    width: 15%;
+    height: 45%;
+    margin-left: 0%;
+}
+.synopsis{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 4%;
+    font-family: Comic Sans MS, Courier New, Verdana, serif;
+    
+}
