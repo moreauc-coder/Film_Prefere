@@ -1,3 +1,24 @@
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import cgi
+import cgitb
+import smtplib
+from email.mime.text import MIMEText
+import smtplib
+
+cgitb.enable()
+form = cgi.FieldStorage()
+email = ""
+pseudo = ""
+message = ""
+
+
+
+
+
+print("Content-type: text/html; charset=utf-8\n")
+html = """
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,7 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://kit.fontawesome.com/d7d8afdd19.js" crossorigin="anonymous"></script>
     <title>Le petit ciné</title>
     
@@ -72,16 +93,43 @@
     <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre e-mail avec qui que ce soit.(c'est faux)</small>
   </div>
   <div class="form-group">
-    <label for="mdp">mot de passe:</label>
-    <input name="MotDePasse" type="password" class="form-control" id="mdp" placeholder="entre ton mot de passe">
+    <label for="pseudo">Pseudo:</label>
+    <input name="pseudo" class="form-control" id="pseudo" placeholder="entre ton pseudo">
   </div>
     <div class="form-group">
     <label for="msg">Message:</label>
-    <textarea name="Message" class="form-control" id="msg" rows="3" placeholder="entre ton message"></textarea>
+    <textarea name="message" class="form-control" id="msg" rows="3" placeholder="entre ton message"></textarea>
   </div>
-  <input type="submit" class="btn btn-primary" name="valider" value="Envoyer" id="formulaire_contact" > //href="Formulaire.py"
+  <input type="submit" class="btn btn-primary" name="valider" value="Envoyer" id="formulaire_contact" >
 </form>
+"""
+print(html)
+if form.getvalue("email") and form.getvalue("pseudo") and form.getvalue("message") :
+    email = form.getvalue("email")
+    pseudo = form.getvalue("pseudo")
+    message = form.getvalue("message")
+    msg = MIMEMultipart()
+    msg['From'] = str(email)
+    msg['To'] = 'tt448723@gmail.com'
+    msg['Subject'] = 'Le Petit Ciné'
+    msg.attach(MIMEText(message))
+    mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+    mailserver.ehlo()
+    mailserver.starttls()
+    mailserver.ehlo()
+    mailserver.login('tt448723@gmail.com', '1a2z3e4r')
+    mailserver.sendmail(str(email), 'tt448723@gmail.com', msg.as_string())
+    mailserver.quit()
+    print("Message transmis")
+else:
+    print("Message non transmis")
 
+
+print(str(email))
+print(str(pseudo))
+print(str(message))
+
+html="""
 
     </main><!-- /.container -->
 
@@ -96,3 +144,18 @@
 
 </body>
 </html>
+"""
+print(html)
+
+
+# else:
+#     raise Exception("non transmis")
+
+
+# a = request.POST['email']
+# b = request.POST['Message']
+# c = request.POST['MotDePasse']
+
+# print(str(a))
+# print(str(b))
+# print(str(c))

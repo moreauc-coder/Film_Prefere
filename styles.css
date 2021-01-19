@@ -1,3 +1,6 @@
+body{
+background-color:blue;
+}
 .bouton_Bande_Annonce {
     position:relative;
     TEXT-ALIGN: CENTER;
@@ -19,12 +22,20 @@
 }
 .LPC{
     position: relative;
-    width: 54%;
+    width: 48%;
     text-align:left 20%;
 }
 .connexion{
+    text-align: center;
     color: white;
-   font-size: 35px;
-    margin-right: 10px;
+    margin: 10px;
     cursor: pointer;
+}
+.connexion_ecrit{
+    font-size: 15px;
+   float: left;
+    margin-right: 10px;
+}
+#icon{
+    font-size: 30px;
 }
